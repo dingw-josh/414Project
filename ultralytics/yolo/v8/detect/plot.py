@@ -10,6 +10,10 @@ from ultralytics.yolo.utils.plotting import Annotator, colors, save_one_box
 import easyocr
 
 import cv2
+import random
+
+
+
 reader = easyocr.Reader(['en'], gpu=True)
 def ocr_image(img,coordinates):
     x,y,w, h = int(coordinates[0]), int(coordinates[1]), int(coordinates[2]),int(coordinates[3])
@@ -114,10 +118,26 @@ class DetectionPredictor(BasePredictor):
                 text_ocr = ocr_image(im0,xyxy)
                 label = text_ocr 
                 if correctPlate != text_ocr:
-    # Print an error message with the two strings
-                  print("Incorrect license plate:")
-                  print(correctPlate)
-                  print(text_ocr)             
+                    # Print an error message with the two strings
+                    with open('licensepredictions.txt', 'a+') as f:
+                        '''f.write(str(os.path.basename(p)) + '\n')
+                        f.write('Incorrect license plate:\n')
+                        f.write('Correct:' + correctPlate + '\n')
+                        f.write('Prediction:'+ text_ocr + '\n\n\n')'''
+                        f.write('X\n')
+                        
+                        
+                else:
+                    with open('licensepredictions.txt', 'a+') as f:
+                        '''f.write(str(os.path.basename(p)) + '\n')
+                        f.write('correct license plate:\n')
+                        f.write(correctPlate + '\n')
+                        f.write(text_ocr + '\n\n\n')'''
+                        f.write('Y\n')
+                        
+                          
+
+                                  
                 self.annotator.box_label(xyxy, label, color=colors(c, True))
             if self.args.save_crop:
                 imc = im0.copy()
@@ -140,4 +160,6 @@ def predict(cfg):
 
 if __name__ == "__main__":
     predict()
+
+
 
