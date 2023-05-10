@@ -9,7 +9,7 @@
 	<h2>Data</h2>
 	<p>We used a dataset of images of cars with license plates, collected from various online sources including Roboflow. For object detection we used a dataset with bounding box coordinate labels to identify license location and for plate number recognition we used images with manually annotated plate number labels, which were then used to train and test our models. After downloading the original images, the key was applying snowy filters to the downloaded images so that we could train our model based on these conditions</p>
 	<figure>
-  <img src="ultralytics/yolo/v8/detect/usimages/car-09.png" alt="Picture of a car with license plate detected in snow">
+  <img src="ultralytics/yolo/v8/detect/usimages/car-09.png" alt="Picture of a car with license plate">
   <figcaption>A Sample Data Picture</figcaption>
 </figure>
 	<h2>Model</h2>
@@ -18,7 +18,8 @@
 	<h3>EasyOCR</h3>
 	<p>EasyOCR has received significant attention in recent research. It boasts high accuracy and speed in recognizing and extracting text from diverse input sources, such as scanned images, photos, and videos.
 The architecture of EasyOCR is based on a deep neural network specifically designed for text recognition tasks. It consists of multiple Convolutional Neural Networks (CNNs) layers that identify and extract the features of the input text, followed by a sequence of Recurrent Neural Networks (RNNs) layers that process the extracted features to generate the recognized text. One of the reasons why we choose EasyOCR is its ability to recognize text in various languages, including Latin-based languages like English, Spanish, and French, as well as Chinese, Japanese, and Korean. We used Easyocr to read the license plate number from the license plate image returned from Yolo.</p>
-	<img src="ultralytics/yolo/v8/detect/usimages/car-09.png" alt="Picture of a car with license plate detected in snow">
+	<img src="resultpic" alt="Example of model working" alt="Picture of model working on image">
+	<figcaption>Example of model working on snowy image</figcaption>
 	<h2>Results</h2>
 	<p>Our models achieved a high accuracy rate of 95% in detecting licesne plate in snowy conditions. However our model struggled in actually recognizing license plate numbers, not only in snowy images, but in clear images as well. It performs well on straightforward and clear plate images, but we realize images will not always be perfect. In the future, we would like to improve the Easyocr model to better handle images at different angles and in different lightning before we can feasibly tackle harsh weather conditions.</p>
 	<h2>Links</h2>
